@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Log in";
+}
+@model User
+
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Log in</title>
+    </head>
+    <body>
+        <h1>Log in</h1>
+
+    <form asp-controller="Authenticate" asp-action="LogIn" method="post">
+        <table>
+            <tr>
+                <th>Email:</th>
+                <td class="inputCell">
+                    <input name="Email" id="emailInput" type="text" placeholder="Email@gmail.com" required/>
+                </td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td class="inputCell">
+                    <input name="Password" id="passwordInput" type="password" placeholder="Password" required />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: right;">
+                    <input type="submit" id="LogInButton" value="Log in" />
+                    </th>
+            </tr>
+        </table>
+    </form>
+
+</body>
+    </html>

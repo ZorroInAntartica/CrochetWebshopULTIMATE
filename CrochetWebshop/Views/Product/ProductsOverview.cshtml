@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CrochetWebshop.Models.Product>
+
+@{
+    ViewBag.Title = "Crochet shop";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        <meta http-equiv="refresh" content="5" />
+        Products
+    </title>
+</head>
+<body>
+    <div gridProducts>
+        <h2>Products Overview</h2>
+
+        @foreach (var product in Model)
+        {
+            <div class="product">
+                <img src="~/Images/@product.Image" alt="@product.Productname" width="300" height="300">
+                <h3>@product.Productname</h3>
+                <h4>@product.Description</h4>
+                <table class="ProductTable">
+                    <tr>
+                        <th>Pattern Creator</th>
+                        <td>@product.PatternCreator</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>@product.Price</td>
+                        <td>        </td>
+                        <th>Time To Make</th>
+                        <td>@product.TimeToMake</td>
+                    </tr>
+                    <tr>
+                        <th>Color</th>
+                        <td>@product.Color</td>
+                    </tr>
+                </table>
+                <form asp-controller="Order" asp-action="OrderProduct" method="post">
+
+                    <input name="ProductId" value="@product.ProductId" id="@product.ProductId" type="text" required hidden />
+                    <input type="submit" id="OrderButton" value="Order me!" />
+                </form>
+            </div>
+        }
+    </div>
+</body>
+</html>

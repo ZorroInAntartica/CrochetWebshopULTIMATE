@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CrochetWebshop.Models.Order>
+
+@{
+    ViewBag.Title = "Order Overview";
+}
+
+<html>
+<head>
+    <meta http-equiv="refresh" content="5" />
+    <h2>Order Overview</h2>
+</head>
+<body>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Nr.</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Color</th>
+            <th>Date of order</th>
+            <th>Status</th>
+            <th>Acties</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+
+            <tr>
+                <div class="OrderData">
+                <td>@order.OrderId</td>                
+                <td>@order.Customer.Email</td>
+                <td>@order.Product.Productname</td>
+                <td>@order.Product.Price</td>
+                <td>@order.Product.Color</td>
+                <td>@order.CreatedDate</td>
+                <td>@order.status</td>
+                <td>
+                    <form asp-controller="Order" asp-action="UpdateOrderStatus" method="post">
+                        <input type="text" id="@order.OrderId" name="OrderId" value="@order.OrderId" required hidden />
+                        <select name="status" class="form-control" required>
+                            <option value="Pending">@CrochetWebshop.Enums.StatusEnum.Pending.ToString()</option>
+                            <option value="Accepted">@CrochetWebshop.Enums.StatusEnum.Accepted.ToString()</option>
+                            <option value="Production">@CrochetWebshop.Enums.StatusEnum.Production.ToString()</option>
+                            <option value="Ready">@CrochetWebshop.Enums.StatusEnum.Ready.ToString()</option>
+                            <option value="Cancelled">@CrochetWebshop.Enums.StatusEnum.Cancelled.ToString()</option>
+                        </select>
+                        <input type="submit" id="UpdateStatusButton" value="Update" />
+                    </form>
+                </td>
+                </div>
+            </tr>
+        }
+    </tbody>
+</table>
+</body>
+</html>

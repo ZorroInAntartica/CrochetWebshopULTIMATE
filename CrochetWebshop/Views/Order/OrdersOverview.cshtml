@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CrochetWebshop.Models.Order>
+
+@{
+    ViewBag.Title = "Order Overview";
+}
+
+
+<html>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<body>
+<h2>Order Overview</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Nr.</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Color</th>
+            <th>Date of order</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.Product.Productname</td>
+                <td>@order.Product.Price</td>
+                <td>@order.Product.Color</td>
+                <td>@order.CreatedDate</td>
+                <td>@order.status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</body>
+</html>

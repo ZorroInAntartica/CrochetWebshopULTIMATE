@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Log Out";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>You're logged out now</p>
+
+<form method="get" asp-action="Login" asp-controller="Authenticate">
+    <button type="submit">Log In</button>
+</form>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CrochetWebshop.Models.Product>
+
+@{
+    ViewBag.Title = "Products overview";
+}
+
+<html>
+<head>
+    <meta http-equiv="refresh" content="5" />
+    <h2>Products Overview</h2>
+</head>
+<body>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Nr.</th>
+            <th>Productname</th>
+            <th>Description</th>
+            <th>Pattern Creator</th>
+            <th>Price</th>
+            <th>Time To Make</th>
+            <th>Image Name</th>
+            <th>Color</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <div class="ProductData">
+                <td>@product.ProductId</td>
+                <td>@product.Productname</td>
+                <td>@product.Description</td>
+                <td>@product.PatternCreator</td>
+                <td>@product.Price</td>
+                <td>@product.TimeToMake</td>
+                <td>@product.Image</td>
+                <td>@product.Color</td>
+            <td>
+            <form asp-controller="Product" asp-action="DeleteProduct" method="post">
+                <input name="ProductId" value="@product.ProductId" id="@product.ProductId" type="text" required hidden />
+                <input type="submit" id="DeleteButton" value="Delete" />
+            </form>
+                </td>
+                </div>
+            </tr>
+            
+        }
+        
+    </tbody>
+</table>
+<div>
+    <form method="get" asp-action="AddProduct" asp-controller="Creator">
+        <button type="submit">Add product</button>
+    </form>
+</div>
+</body>
+</html>
+

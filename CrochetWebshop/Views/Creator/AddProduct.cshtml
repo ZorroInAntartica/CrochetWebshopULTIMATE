@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Add Product";
+}
+@model Product
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+
+    <h2>Add Product</h2>
+    <form asp-controller="Creator" asp-action="AddProduct" method="post">
+        <table>
+            <tr>
+                <th>Productname:</th>
+                <a href="c:\users\janin\source\repos\crochetwebshop\crochetwebshop\views\creator\addproduct.cshtml">c:\users\janin\source\repos\crochetwebshop\crochetwebshop\views\creator\addproduct.cshtml</a>
+                <td class="inputCell">
+                    <input name="Productname" id="Productname" type="text" placeholder="Productname" required />
+                </td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td class="inputCell">
+                    <input name="Description" id="Description" type="text" placeholder="Description" required />
+                </td>
+            </tr>
+            <tr>
+                <th>Pattern Creator:</th>
+                <td class="inputCell">
+                    <input name="PatternCreator" id="PatternCreator" type="text" placeholder="PatternCreator" required />
+                </td>
+            </tr>
+            <tr>
+                <th>Price (€):</th>
+                <td class="inputCell">
+                    <input name="Price" id="Price" type="number" placeholder="Price (€)" required />
+                </td>
+            </tr>
+            <tr>
+                <th>Time To Make (Hours):</th>
+                <td class="inputCell">
+                    <input name="TimeToMake" id="TimeToMake" type="number" placeholder="TimeToMake" required />
+                </td>
+            </tr>
+            <tr>
+                <th>Image name:</th>
+                <td class="inputCell">
+                    <input name="Image" id="Image" type="text" placeholder="ImageName" required />
+                </td>
+            </tr>
+            <tr>
+                <th>Color:</th>
+                <td class="inputCell">
+                    <input name="Color" id="Color" type="text" placeholder="Color" required />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: right;">
+                    <input type="submit" id="AddProductButton" value="Add Product" />
+                </th>
+            </tr>
+        </table>
+    </form>
+    <div>
+        <form method="get" asp-action="ProductsOverview" asp-controller="Creator">
+            <button type="submit">Go to Products Overview</button>
+        </form>
+    </div>
+</body>
+</html>
