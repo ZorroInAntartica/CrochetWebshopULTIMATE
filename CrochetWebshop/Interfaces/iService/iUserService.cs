@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CrochetWebshop.Models;
+﻿using CrochetWebshop.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CrochetWebshop.Interfaces.iService
 {
@@ -12,6 +12,8 @@ namespace CrochetWebshop.Interfaces.iService
         public Task<User?> GetUserByEmailAsync(string email);
 
         public Task<User?> GetUserByIdAsync(int id);
+
+        public Task<bool> PromoteToCreator(int userId);
 
         public Task<bool> ValidateUser(string email, string password);
     }

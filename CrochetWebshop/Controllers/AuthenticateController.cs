@@ -108,5 +108,21 @@ namespace CrochetWebshop.Controllers
             }
             else { return View(user); }
         }
+
+        [HttpGet("RegisterAsAdmin")]
+        public IActionResult RegisterAsAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost("RegisterAsAdmin")]
+        public async Task<IActionResult> RegisterAsAdmin([Bind("UserId")] User user)
+        {
+            if (await _userService.PromoteToCreator(user.UserId) == true)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else { return View(user); }
+        }
     }
 }
