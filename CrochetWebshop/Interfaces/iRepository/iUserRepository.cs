@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CrochetWebshop.Enums;
 using CrochetWebshop.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CrochetWebshop.Interfaces.iRepository
 {
@@ -12,5 +13,7 @@ namespace CrochetWebshop.Interfaces.iRepository
         public Task<User?> GetUserByEmail(string email);
 
         public Task<User?> GetUserById(int id);
+
+        public Task<bool> UpdateRoleAsync(int userId, RolesEnum role);
     }
 }

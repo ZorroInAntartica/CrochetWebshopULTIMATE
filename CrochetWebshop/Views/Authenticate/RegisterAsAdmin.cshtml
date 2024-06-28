@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "RegisterAsAdmin";
+}
+@model User
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promote to creator</title>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+<body>
+    <h1>Promote to creator</h1>
+
+
+    <form asp-controller="Authenticate" asp-action="RegisterAsAdmin" method="post">
+        <table>
+            <tr>
+                <th>UserId:</th>
+                <td class="inputCell">
+                    <input name="UserId" id="userIdInput" type="text" placeholder="1" required />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: right;">
+                    <input type="submit" id="PromoteButton" value="Promote" />
+                </th>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

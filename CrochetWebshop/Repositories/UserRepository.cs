@@ -1,4 +1,5 @@
 ﻿using CrochetWebshop.DAL;
+using CrochetWebshop.Enums;
 using CrochetWebshop.Interfaces.iRepository;
 using CrochetWebshop.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +49,20 @@ namespace CrochetWebshop.Repositories
                 }
             }
             return null;
+        }
+
+        public async Task<bool> UpdateRoleAsync(int userId, RolesEnum role)
+        {
+            User? user = await GetUserById(userId);
+            if (user is not null)
+            {
+                user.Role = role.ToString();
+                _context.Attach(user);
+                _context.Entry(user).Property("Role").IsModified = true;
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

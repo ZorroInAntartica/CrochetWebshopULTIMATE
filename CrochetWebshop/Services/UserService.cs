@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CrochetWebshop.Enums;
+﻿using CrochetWebshop.Enums;
 using CrochetWebshop.Interfaces.iRepository;
 using CrochetWebshop.Interfaces.iService;
 using CrochetWebshop.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CrochetWebshop.Services
 {
@@ -43,6 +43,11 @@ namespace CrochetWebshop.Services
 
         public async Task<User?> GetUserByIdAsync(int id)
             => await _userRepository.GetUserById(id);
+
+        public async Task<bool> PromoteToCreator(int userId)
+        {
+            return await _userRepository.UpdateRoleAsync(userId, RolesEnum.Creator);
+        }
 
         public async Task<bool> ValidateUser(string email, string password)
         {
